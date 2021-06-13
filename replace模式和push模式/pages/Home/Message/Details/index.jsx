@@ -15,11 +15,11 @@ export default class Details extends Component {
     // const { id, title } = qs.parse(search.slice(1))
 
     /* 接收state参数 */
+    // console.log(this.props.location.state)
     const { id, title } = this.props.location.state || {}
     const findData = data.find(findObj => {
-      return findObj.id === id
+      return findObj.id === id || {}
     })
-
     return (
       <ul>
         <li>ID:{id}</li>
