@@ -12,9 +12,11 @@ export default class Search extends Component {
     axios.get(`http://localhost:3000/api/search/users?q=${value}`).then(
       Response => {
         // this.props.uploadAppState({ users: Response.data.items, isLoading: false }) // 请求成功并且关闭loading
+        // 发布消息
         PubSub.publish('MySubscribe', { users: Response.data.items, isLoading: false })
       },
       Error => {
+        // 发布消息
         // this.props.uploadAppState({ err: Error.message, isLoading: false })
         PubSub.publish('MySubscribe', { err: Error.message, isLoading: false })
       }

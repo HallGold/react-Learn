@@ -12,12 +12,14 @@ export default class List extends Component {
 
   // 页面加载完成之后
   componentDidMount() {
+    // 订阅消息
     this.token = PubSub.subscribe('MySubscribe', (msg, data) => {
       this.setState(data)
     })
   }
   // 卸载组件前
   componentWillUnmount() {
+    // 取消订阅
     PubSub.unsubscribe(this.token)
   }
   render() {
